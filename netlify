@@ -1,0 +1,176 @@
+# ==============================
+
+# 🌐 NETLIFY DEPLOYMENT GUIDE (MERN FRONTEND)
+
+# ==============================
+
+# 1️⃣ SIGN IN
+
+* Go to: https://netlify.com
+* Click: Login with GitHub
+* Authorize access
+
+# ==============================
+
+# 2️⃣ IMPORT PROJECT
+
+# ==============================
+
+* Click: Add new site → Import from Git
+* Choose: GitHub
+* Select repo: mern-item-manager
+
+# ==============================
+
+# 3️⃣ BUILD SETTINGS (CRITICAL)
+
+# ==============================
+
+# Option A (Recommended for MERN project structure)
+
+Base Directory:
+.
+
+Build Command:
+cd frontend && npm install --include=dev && node ./node_modules/vite/bin/vite.js build
+
+Publish Directory:
+frontend/dist
+
+# ⚠️ WHY THIS SETUP:
+
+# - Project has frontend + backend
+
+# - Build must run inside frontend folder
+
+# - node command avoids vite permission error
+
+# ==============================
+
+# 4️⃣ API CONNECTION (IMPORTANT)
+
+# ==============================
+
+# In frontend/src/api/itemApi.js:
+
+const API = axios.create({
+baseURL: "https://your-railway-url/api",
+});
+
+# Example:
+
+https://mern-item-manager-production.up.railway.app/api
+
+# ⚠️ COMMON ERROR:
+
+# ❌ /api/items/items (duplicate path)
+
+# ✔ Correct: /api + /items
+
+# ==============================
+
+# 5️⃣ DEPLOY
+
+# ==============================
+
+* Click: Deploy site
+* Wait 1–2 minutes
+
+# ==============================
+
+# 6️⃣ REDEPLOY (AFTER FIXES)
+
+# ==============================
+
+* Go to: Deploys tab
+* Click: Trigger deploy → Clear cache and deploy
+
+# OR push code:
+
+git add .
+git commit -m "fix frontend"
+git push
+
+# ==============================
+
+# 7️⃣ COMMON ERRORS & FIXES
+
+# ==============================
+
+# ❌ vite: Permission denied
+
+→ Fix:
+Use build command:
+node ./node_modules/vite/bin/vite.js build
+
+# ❌ Blank page
+
+→ Fix:
+Check API URL (no localhost)
+
+# ❌ Data not loading
+
+→ Fix:
+Correct backend URL in frontend
+
+# ❌ Build fails (few packages installed)
+
+→ Fix:
+Use:
+npm install --include=dev
+
+# ❌ Wrong publish directory
+
+→ Fix:
+Use:
+frontend/dist (NOT dist if base is ".")
+
+# ❌ Page refresh shows 404
+
+→ Fix (optional):
+Add _redirects file in frontend/public:
+
+/* /index.html 200
+
+# ==============================
+
+# 8️⃣ TEST LIVE SITE
+
+# ==============================
+
+Open:
+https://your-site-name.netlify.app
+
+✔ Page loads
+✔ Add item works
+✔ Data saved
+✔ Data displayed
+
+# ==============================
+
+# 9️⃣ FINAL SUBMISSION CHECK
+
+# ==============================
+
+Take screenshots:
+
+✔ Netlify deploy success
+✔ Website homepage
+✔ Add item working
+✔ Data showing
+
+# ==============================
+
+# 🎯 FINAL RESULT
+
+# ==============================
+
+✔ Frontend deployed
+✔ Connected to Railway backend
+✔ Full MERN app working online
+
+# ==============================
+
+# DONE 🔥
+
+# ==============================
