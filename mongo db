@@ -1,0 +1,91 @@
+# ==============================
+
+# 🍃 MONGODB ATLAS CONNECTION GUIDE
+
+# ==============================
+
+# 1️⃣ Create MongoDB Atlas Account
+
+* Go to: https://www.mongodb.com/atlas
+* Sign up (use Google or email)
+
+# 2️⃣ Create Cluster
+
+* Click "Create" → Choose FREE tier (M0)
+* Select region (closest: Singapore)
+* Click "Create Cluster"
+
+# 3️⃣ Create Database User
+
+* Go to: Database Access
+* Click "Add New Database User"
+* Username: admin (or anything)
+* Password: admin123 (or your own)
+* Role: Read and Write to Any Database
+* Click "Add User"
+
+# 4️⃣ Allow Network Access (VERY IMPORTANT)
+
+* Go to: Network Access
+* Click "Add IP Address"
+* Click "Allow Access from Anywhere"
+* It will add:
+  0.0.0.0/0
+* Click Confirm
+
+# 5️⃣ Get Connection String
+
+* Go to: Clusters → Click "Connect"
+* Choose: "Drivers"
+* Copy connection string like:
+
+mongodb+srv://admin:admin123@cluster0.xxxxx.mongodb.net/?retryWrites=true&w=majority
+
+# 6️⃣ Modify Connection String
+
+* Replace password and DB name:
+
+mongodb+srv://admin:admin123@cluster0.xxxxx.mongodb.net/myDatabase?retryWrites=true&w=majority
+
+# 7️⃣ Add to Railway ENV Variables
+
+* Go to Railway → Your Project → Variables
+* Add:
+
+MONGO_URI=mongodb+srv://admin:admin123@cluster0.xxxxx.mongodb.net/myDatabase?retryWrites=true&w=majority
+
+PORT=5000
+
+# 8️⃣ Backend Code (already correct)
+
+mongoose.connect(process.env.MONGO_URI)
+
+# 9️⃣ Redeploy
+
+* Push code OR click "Deploy" in Railway
+
+# ==============================
+
+# ✅ TEST
+
+# ==============================
+
+* Open:
+  https://your-railway-url/api/items
+
+✔ If no error → MongoDB connected
+✔ If error → check IP access or password
+
+# ==============================
+
+# DONE 🔥
+
+# ==============================
+
+jeyameduacc@gmail.com
+
+admin2
+admin
+
+PORT=5000
+MONGO_URI=mongodb+srv://admin2:admin@cluster0.wjmgi90.mongodb.net/?appName=Cluster0
