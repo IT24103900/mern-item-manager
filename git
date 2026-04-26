@@ -1,0 +1,116 @@
+# ==============================
+
+# 🧠 GIT GUIDE (MERN PROJECT)
+
+# ==============================
+
+# 1️⃣ INITIALIZE GIT (first time only)
+
+cd WMT_LabTest_Project
+git init
+
+# 2️⃣ CONNECT TO GITHUB REPO
+
+git remote add origin https://github.com/YOUR_USERNAME/mern-item-manager.git
+
+# 3️⃣ ADD .gitignore (IMPORTANT)
+
+# Create a file named .gitignore and add:
+
+node_modules/
+.env
+frontend/node_modules/
+backend/node_modules/
+dist/
+frontend/dist/
+
+# 4️⃣ FIRST PUSH (UPLOAD PROJECT)
+
+git add .
+git commit -m "Initial commit - MERN Item Manager"
+git branch -M main
+git push -u origin main
+
+# ==============================
+
+# 🔁 DAILY WORKFLOW
+
+# ==============================
+
+# After making changes:
+
+git add .
+git commit -m "Describe your changes"
+git push
+
+# ==============================
+
+# 🌿 CREATE NEW BRANCH (if needed)
+
+# ==============================
+
+git checkout -b feature-branch-name
+git push origin feature-branch-name
+
+# ==============================
+
+# 🔄 PULL LATEST CHANGES
+
+# ==============================
+
+git pull origin main
+
+# ==============================
+
+# ⚠️ FIX COMMON ERROR (MERGE HEAD)
+
+# ==============================
+
+# If you see:
+
+# "You have not concluded your merge"
+
+git add .
+git commit -m "Resolve merge"
+git pull origin main
+
+# ==============================
+
+# ❌ REMOVE node_modules FROM GIT (IMPORTANT)
+
+# ==============================
+
+git rm -r --cached node_modules
+git rm -r --cached frontend/node_modules
+git rm -r --cached backend/node_modules
+
+git commit -m "Remove node_modules"
+git push
+
+# ==============================
+
+# 🚀 AFTER DEPLOYMENT CHANGES
+
+# ==============================
+
+git add .
+git commit -m "Deployment fix (Railway + Netlify)"
+git push
+
+# ==============================
+
+# ✅ FINAL STRUCTURE (FOR MARKS)
+
+# ==============================
+
+project/
+├── backend/
+├── frontend/
+├── .gitignore
+├── README.md
+
+# ==============================
+
+# DONE 🔥
+
+# ==============================
