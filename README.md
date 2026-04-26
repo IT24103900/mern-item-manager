@@ -1,20 +1,20 @@
-# =========================
-# BACKEND SETUP
-# =========================
+
+BACKEND SETUP
+
 cd backend
 npm install
 npm run dev
 
-# =========================
-# FRONTEND SETUP
-# =========================
+
+FRONTEND SETUP
+
 cd ../frontend
 npm install
 npm run dev
 
-# =========================
-# GIT SETUP + PUSH
-# =========================
+
+GIT SETUP + PUSH
+
 cd ..
 git init
 git add .
