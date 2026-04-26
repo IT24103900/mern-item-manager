@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || "http://localhost:5000/api",
+   baseURL: "https://wmtlabtest-production-2696.up.railway.app/api",
 });
 
 export const getItems = () => API.get("/items");
