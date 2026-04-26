@@ -1,0 +1,121 @@
+# ==============================
+
+# 🚀 BACKEND (Railway Setup)
+
+# ==============================
+
+# ✅ server.js (backend)
+
+import express from "express";
+import dotenv from "dotenv";
+import cors from "cors";
+import mongoose from "mongoose";
+import itemRoutes from "./routes/itemRoutes.js";
+
+dotenv.config();
+
+const app = express();
+
+app.use(cors());
+app.use(express.json());
+
+app.get("/", (req, res) => {
+res.json({ message: "Item Manager API is running..." });
+});
+
+app.use("/api/items", itemRoutes);
+
+const PORT = process.env.PORT || 5000;
+
+mongoose
+.connect(process.env.MONGO_URI)
+.then(() => {
+console.log("MongoDB connected");
+app.listen(PORT, () => {
+console.log(`Server running on port ${PORT}`);
+});
+})
+.catch((error) => {
+console.error("Database connection error:", error.message);
+process.exit(1);
+});
+
+# ✅ Railway ENV Variables (IMPORTANT)
+
+MONGO_URI=your_mongodb_connection_string
+PORT=5000
+
+# ==============================
+
+# 🌐 FRONTEND (Netlify Setup)
+
+# ==============================
+
+# ✅ src/api/itemApi.js
+
+import axios from "axios";
+
+const API = axios.create({
+baseURL: import.meta.env.VITE_API_URL || "https://mern-item-manager-production-f75c.up.railway.app/api",
+});
+
+export const getItems = () => API.get("/items");
+export const getItemById = (id) => API.get(`/items/${id}`);
+export const createItem = (itemData) => API.post("/items", itemData);
+export const updateItem = (id, itemData) => API.put(`/items/${id}`, itemData);
+export const deleteItem = (id) => API.delete(`/items/${id}`);
+
+export default API;
+
+# ✅ .env (frontend)
+
+VITE_API_URL=https://mern-item-manager-production-f75c.up.railway.app/api
+
+# ==============================
+
+# ⚙️ NETLIFY BUILD SETTINGS
+
+# ==============================
+
+# Build Command:
+
+cd frontend && npm install --include=dev && npm run build
+
+# Publish Directory:
+
+frontend/dist
+
+# ==============================
+
+# 🔁 GIT COMMANDS (AFTER CHANGES)
+
+# ==============================
+
+git add .
+git commit -m "Final deployment fix"
+git push
+
+# ==============================
+
+# ✅ FINAL CHECK
+
+# ==============================
+
+# Backend test:
+
+https://mern-item-manager-production-f75c.up.railway.app
+
+# API test:
+
+https://mern-item-manager-production-f75c.up.railway.app/api/items
+
+# Frontend:
+
+(Netlify URL)
+
+✔ Add Item works
+✔ Serial Number saves
+✔ Data shows on Home page
+✔ Full CRUD works
+
+# DONE 🔥
