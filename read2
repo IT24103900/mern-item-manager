@@ -119,3 +119,6 @@ https://mern-item-manager-production-f75c.up.railway.app/api/items
 ✔ Full CRUD works
 
 # DONE 🔥
+
+# for netlify frontend 
+cd frontend && npm install --include=dev && chmod +x node_modules/.bin/vite && npm run build
